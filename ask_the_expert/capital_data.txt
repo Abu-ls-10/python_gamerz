@@ -1,0 +1,9 @@
+Canada/Ottawa
+China/Beijing
+France/Paris
+Argentina/Buenos Aires
+Egypt/Cairo
+India/New Delhi
+Pakistan/Islamabad
+USA/Washington D.C
+Palestine/Jerusalem
