@@ -11,7 +11,7 @@ Python Gamerz started as a culminating project in high school aimed at framing a
 ## Technologies Used
 
 - **Programming Languages**: Python
-- **Libraries**: Pygame, Numpy, Turtle
+- **Libraries**: Pygame, Numpy, Turtle, Tkinter
 - **IDE(s)**: VS Code, Replit
 
 ## Main Takeaways
