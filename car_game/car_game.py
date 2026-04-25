@@ -36,7 +36,7 @@ yellow = (255, 255, 0)
 gold = (255, 215, 0)
 
 # Game Font
-font = 'Absolute_Zero.otf'
+font = 'assets/Absolute_Zero.otf'
 
 # Game Framerate
 clock = pygame.time.Clock()
@@ -49,14 +49,14 @@ class Animation(pygame.sprite.Sprite):
         super(Animation, self).__init__()
 
         self.images = []
-        self.images.append(pygame.image.load(('Road1.png')).convert_alpha())
-        self.images.append(pygame.image.load(('Road2.png')).convert_alpha())
-        self.images.append(pygame.image.load(('Road3.png')).convert_alpha())
-        self.images.append(pygame.image.load(('Road4.png')).convert_alpha())
-        self.images.append(pygame.image.load(('Road5.png')).convert_alpha())
-        self.images.append(pygame.image.load(('Road6.png')).convert_alpha())
-        self.images.append(pygame.image.load(('Road7.png')).convert_alpha())
-        self.images.append(pygame.image.load(('Road8.png')).convert_alpha())
+        self.images.append(pygame.image.load(('assets/Road1.png')).convert_alpha())
+        self.images.append(pygame.image.load(('assets/Road2.png')).convert_alpha())
+        self.images.append(pygame.image.load(('assets/Road3.png')).convert_alpha())
+        self.images.append(pygame.image.load(('assets/Road4.png')).convert_alpha())
+        self.images.append(pygame.image.load(('assets/Road5.png')).convert_alpha())
+        self.images.append(pygame.image.load(('assets/Road6.png')).convert_alpha())
+        self.images.append(pygame.image.load(('assets/Road7.png')).convert_alpha())
+        self.images.append(pygame.image.load(('assets/Road8.png')).convert_alpha())
         self.index = 0
         self.rect = pygame.Rect(0, 0, 900, 720)
 
@@ -70,18 +70,18 @@ class Animation(pygame.sprite.Sprite):
 
 ### Sound Effects ###
 def crash_sound():
-    crash_s = pygame.mixer.Sound(('Crash.wav'))
+    crash_s = pygame.mixer.Sound(('assets/Crash.wav'))
     pygame.mixer.Sound.play(crash_s)
 
 
 def coin_sound():
-    coinCollect_sound = pygame.mixer.Sound(('Coin Collect.wav'))
+    coinCollect_sound = pygame.mixer.Sound(('assets/Coin Collect.wav'))
     pygame.mixer.Sound.play(coinCollect_sound)
 
 
 ### Car ###
 def car(x, y):
-    carImage = pygame.image.load(('Car.png')).convert_alpha()
+    carImage = pygame.image.load(('assets/Car.png')).convert_alpha()
     car = pygame.transform.scale(carImage, (100, 200))
     screen.blit(car, (x, y))
 
@@ -89,14 +89,14 @@ def car(x, y):
 ### Coin ###
 def coin(x, y):
     coin = []
-    coinImage = pygame.image.load(('Coin.png')).convert_alpha()
+    coinImage = pygame.image.load(('assets/Coin.png')).convert_alpha()
     coin = pygame.transform.scale(coinImage, (60, 60))
     screen.blit(coin, (x, y))
 
 
 ### Roadblock ###
 def roadblock(x, y):
-    roadblockImage = pygame.image.load(('Roadblock.png')).convert_alpha()
+    roadblockImage = pygame.image.load(('assets/Roadblock.png')).convert_alpha()
     roadblock = pygame.transform.scale(roadblockImage, (100, 100))
     screen.blit(roadblock, (x, y))
 
@@ -121,7 +121,7 @@ def crashed(roadblockX, roadblockY, carX, carY):
 
 
 def score(x, y, score_value):
-    scoreImage = pygame.image.load(('Score Display.png')).convert_alpha()
+    scoreImage = pygame.image.load(('assets/Score Display.png')).convert_alpha()
     score_display = pygame.transform.scale(scoreImage, (380, 150))
     screen.blit(score_display, (250, -50))
     score = text_format('Score: ' + str(score_value), font, 35, gold)
@@ -138,25 +138,25 @@ def game_over():
 
 ### Game Controls ###
 def controls_menu():
-    esc_keyImage = pygame.image.load(('ESC Key.png')).convert_alpha()
+    esc_keyImage = pygame.image.load(('assets/ESC Key.png')).convert_alpha()
     esc_key = pygame.transform.scale(esc_keyImage, (45, 45))
     text_esc = text_format('Main Menu', font, 15, white)
     screen.blit(esc_key, (805, 520))
     screen.blit(text_esc, (660, 530))
 
-    spacebarImage = pygame.image.load(('Spacebar.png')).convert_alpha()
+    spacebarImage = pygame.image.load(('assets/Spacebar.png')).convert_alpha()
     space_key = pygame.transform.scale(spacebarImage, (45, 45))
     text_space = text_format('Pause Game', font, 15, white)
     screen.blit(space_key, (805, 460))
     screen.blit(text_space, (660, 480))
 
-    right_keyImage = pygame.image.load(('Right Key.png')).convert_alpha()
+    right_keyImage = pygame.image.load(('assets/Right Key.png')).convert_alpha()
     right_arrow = pygame.transform.scale(right_keyImage, (45, 45))
     text_right = text_format('Move Right', font, 15, white)
     screen.blit(right_arrow, (805, 590))
     screen.blit(text_right, (660, 600))
 
-    left_keyImage = pygame.image.load(('Left Key.png')).convert_alpha()
+    left_keyImage = pygame.image.load(('assets/Left Key.png')).convert_alpha()
     left_key = pygame.transform.scale(left_keyImage, (45, 45))
     text_left = text_format('Move Left', font, 15, white)
     screen.blit(left_key, (805, 660))
@@ -284,7 +284,7 @@ def main_menu():
                         quit()
 
         # Main Menu UI
-        bg = pygame.image.load(('Menu.png'))
+        bg = pygame.image.load(('assets/Menu.png'))
         menu_i = pygame.transform.scale(bg, (900, 720))
         screen.blit(menu_i, (0, 0), (0, 0, screen_width, screen_height))
 
