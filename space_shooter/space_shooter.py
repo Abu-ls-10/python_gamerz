@@ -2,11 +2,33 @@ import turtle
 import math
 import random
 
+import os
+os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "1"
+
 try:
-    import winsound
+    import pygame
+    pygame.mixer.init()
     SOUND_ENABLED = True
-except ImportError:
+except Exception:
     SOUND_ENABLED = False
+
+
+SHOOT_SOUND = "assets/laser.mp3"
+ENEMY_DEATH_SOUND = "assets/zombie_death.mp3"
+
+
+def load_sound(path):
+    if not SOUND_ENABLED or not os.path.exists(path):
+        return None
+
+    try:
+        return pygame.mixer.Sound(path)
+    except Exception:
+        return None
+
+
+laser_sfx = load_sound(SHOOT_SOUND)
+zombie_death_sfx = load_sound(ENEMY_DEATH_SOUND)
 
 
 # =========================
@@ -69,12 +91,10 @@ game_running = False
 # =========================
 # Sound
 # =========================
-def play_sound(file_name):
-    if SOUND_ENABLED:
-        try:
-            winsound.PlaySound(file_name, winsound.SND_ASYNC)
-        except:
-            pass
+def play_sound(sound, volume=0.5):
+    if sound:
+        sound.set_volume(volume)
+        sound.play()
 
 
 # =========================
@@ -287,7 +307,7 @@ def shoot_laser():
         return
 
     if laser_state == "ready":
-        play_sound("ls.wav")
+        play_sound(laser_sfx, 0.35)
         laser_state = "shoot"
         laser.goto(player.xcor(), player.ycor() + 25)
         laser.showturtle()
@@ -375,7 +395,7 @@ def check_laser_enemy_collision():
 
     for enemy in enemies:
         if is_collision(laser, enemy, 30):
-            play_sound("EXP.wav")
+            play_sound(zombie_death_sfx, 0.5)
 
             laser.hideturtle()
             laser.goto(0, -400)
